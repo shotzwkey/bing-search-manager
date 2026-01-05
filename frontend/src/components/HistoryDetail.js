@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { historyAPI, searchAPI } from '../api';
+import { historyAPI } from '../api';
 import { useParams, useNavigate } from 'react-router-dom';
 
 function HistoryDetail() {
@@ -20,26 +20,6 @@ function HistoryDetail() {
       console.error('Error loading history item:', error);
       alert('Item not found');
       navigate('/history');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleSearchAgain = async () => {
-    try {
-      setLoading(true);
-      const response = await searchAPI.search(historyItem.query, 10);
-      const newResults = response.data.results;
-      
-      await historyAPI.add({
-        query: historyItem.query,
-        results: newResults
-      });
-      
-      alert('New search saved to history!');
-      navigate('/history');
-    } catch (error) {
-      alert('Error searching again');
     } finally {
       setLoading(false);
     }
@@ -66,9 +46,6 @@ function HistoryDetail() {
             Searched on: {new Date(historyItem.searchedAt).toLocaleString()}
           </p>
         </div>
-        <button style={styles.searchAgainButton} onClick={handleSearchAgain} disabled={loading}>
-          {loading ? 'Searching...' : '🔄 Search Again'}
-        </button>
       </div>
 
       {historyItem.notes && (
@@ -126,15 +103,6 @@ const styles = {
     fontSize: '14px',
     color: '#666',
     margin: 0,
-  },
-  searchAgainButton: {
-    padding: '12px 24px',
-    backgroundColor: '#28a745',
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontSize: '16px',
   },
   notesBox: {
     padding: '15px',
