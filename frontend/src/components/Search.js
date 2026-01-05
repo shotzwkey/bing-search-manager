@@ -56,7 +56,7 @@ function Search() {
       {searched && results.length > 0 && (
         <div style={styles.saveContainer}>
           <button style={styles.saveButton} onClick={handleSaveToHistory}>
-            💾 Save to History
+            Save to History
           </button>
           <p style={styles.resultCount}>{results.length} results found</p>
         </div>
