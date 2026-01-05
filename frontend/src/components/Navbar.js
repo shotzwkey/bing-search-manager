@@ -16,11 +16,11 @@ function Navbar({ onLogout }) {
     <nav style={styles.nav}>
       <div style={styles.container}>
         <Link to="/" style={styles.logoLink}>
-          <h1 style={styles.logo}>🔍 SearchHub</h1>
+          <h1 style={styles.logo}>QueryVault</h1>
         </Link>
         <div style={styles.links}>
-          <Link to="/" style={styles.link}>Search</Link>
-          <Link to="/history" style={styles.link}>History</Link>
+          <Link to="/" style={styles.link}>New Search</Link>
+          <Link to="/history" style={styles.link}>My Searches</Link>
           <span style={styles.username}>Hello, {username}</span>
           <button onClick={handleLogout} style={styles.logoutButton}>
             Logout
@@ -33,7 +33,7 @@ function Navbar({ onLogout }) {
 
 const styles = {
   nav: {
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#2c3e50',
     color: 'white',
     padding: '15px 0',
   },
